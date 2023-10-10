@@ -1,4 +1,4 @@
-package test;
+package session3;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,12 +8,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import session3.Calculadora;
+class CuentaTest {
 
-class CalculadoraTest {
-
+	static Cuenta cuenta;
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		cuenta = new Cuenta(0);
 	}
 
 	@AfterAll
@@ -29,26 +30,16 @@ class CalculadoraTest {
 	}
 
 	@Test
-	void testSuma() {
-		assertEquals(5, Calculadora.suma(2, 3));
+	void testIngresar() {
+		cuenta.Ingresar(3000);
+		assertEquals(3000, cuenta.getSaldo());
 		//fail("Not yet implemented");
 	}
 	
 	@Test
-	void testResta() {
-		assertEquals(-1, Calculadora.resta(2, 3));
-		//fail("Not yet implemented");
-	}
-	
-	@Test
-	void testMultiplica() {
-		assertEquals(6, Calculadora.multiplica(2, 3));
-		//fail("Not yet implemented");
-	}
-	
-	@Test
-	void testDivide() {
-		assertEquals(0, Calculadora.divide(2, 3));
+	void testRetirar() {
+		cuenta.Retirar(3000);
+		assertEquals(-3000, cuenta.getSaldo());
 		//fail("Not yet implemented");
 	}
 
